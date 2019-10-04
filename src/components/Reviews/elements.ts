@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  width: 100%;
-  padding-left: 50px;
+  width: 70%;
+  padding: 20px;
+  margin-top: 60px;
+  margin-left: 20px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .14);
+  background-color: #fff;
+`;
+
+export const Actions = styled.div`
+  display: flex;
+  
+  & > div {
+    margin-right: 20px;
+  }
 `;

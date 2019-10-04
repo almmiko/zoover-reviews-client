@@ -1,6 +1,7 @@
 import { List } from 'antd';
 import * as React from 'react';
-import { Wrapper } from './elements';
+import { Wrapper, Actions } from './elements';
+import Filter from './components/Filter/Filter';
 
 const listData:any = [];
 
@@ -20,14 +21,18 @@ class ReviewsList extends React.Component<any> {
     render() {
         return(
             <Wrapper>
-                <List
+              <Actions>
+                <Filter />
+                <Filter />
+              </Actions>
+              <List
                     itemLayout="vertical"
                     size="large"
                     pagination={{
                         onChange: page => {
                             console.log(page);
                         },
-                        pageSize: 3,
+                        pageSize: 10,
                     }}
                     dataSource={listData}
                     renderItem={(item:any) => (
