@@ -3,40 +3,28 @@ import { Select } from 'antd';
 import { Title } from './elements';
 const { Option } = Select;
 
-function onChange(value: any) {
-  console.log(`selected ${value}`);
-}
+class Filter extends React.Component<{}> {
 
-function onBlur() {
-  console.log('blur');
-}
+  onChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
 
-function onFocus() {
-  console.log('focus');
-}
-
-function onSearch(val: any) {
-  console.log('search:', val);
-}
-
-class Filter extends React.Component<any> {
   render() {
     return (
       <div>
-        <Title>Traveled with: </Title>
+        <Title>Traveled with:</Title>
         <Select
-          showSearch
+          // disabled={true}
           style={{ width: 200 }}
-          placeholder="Select a person"
+          placeholder="Select type"
           optionFilterProp="children"
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onSearch={onSearch}
+          onChange={this.onChange}
         >
-          <Option value="jack">Jack</Option>
-          <Option value="lucy">Lucy</Option>
-          <Option value="tom">Tom</Option>
+          <Option value="FAMILY">FAMILY</Option>
+          <Option value="FRIENDS">FRIENDS</Option>
+          <Option value="OTHER">OTHER</Option>
+          <Option value="COUPLE">COUPLE</Option>
+          <Option value="SINGLE">SINGLE</Option>
         </Select>
       </div>
 

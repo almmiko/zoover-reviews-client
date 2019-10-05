@@ -25,7 +25,7 @@ class Comments extends React.Component<Props> {
             console.log(page);
           },
           pageSize: +meta.limit || 20,
-          total: 200, //todo return collection from be
+          total: meta.totalItems,
         }}
         dataSource={resources}
         renderItem={(item: Resource) => (

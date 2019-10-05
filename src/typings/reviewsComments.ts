@@ -64,6 +64,7 @@ export interface Meta {
   page: string;
   limit: string;
   totalPages: number;
+  totalItems: number;
 }
 
 export interface ReviewsComments {
