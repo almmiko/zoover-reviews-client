@@ -3,6 +3,33 @@ import reviewsService, { Query } from '../services/reviewsService';
 import { ReviewStats } from '../typings/reviewStats';
 import { ReviewsComments, Meta } from '../typings/reviewsComments';
 
+export const STATS_MAPPING = {
+  location: 'Location',
+  service: 'Service',
+  priceQuality: 'Price Quality',
+  food: 'Food',
+  room: 'Room',
+  childFriendly: 'Child Friendly',
+  interior: 'Interior',
+  size: 'Size',
+  activities: 'Activities',
+  restaurants: 'Restaurants',
+  sanitaryState: 'Sanitary State',
+  accessibility: 'Accessibility',
+  nightlife: 'Nightlife',
+  culture: 'Culture',
+  surrounding: 'Surrounding',
+  atmosphere: 'Atmosphere',
+  noviceSkiArea: 'Novice Ski Area',
+  advancedSkiArea: 'Advanced Ski Area',
+  apresSki: 'ApresSki',
+  beach: 'Beach',
+  entertainment: 'Entertainment',
+  environmental: 'Environmental',
+  pool: 'Pool',
+  terrace: 'Terrace',
+};
+
 class ReviewsStore {
 
   @observable

@@ -3,6 +3,7 @@ import { Wrapper, Header, RatingNumber, Title, TitleText, TitleSubInfo, RatingAs
 import { observer } from 'mobx-react';
 import moment from 'moment';
 import { Resource } from '../../../../typings/reviewsComments';
+import { STATS_MAPPING } from '../../../../stores/reviewsStore';
 
 type Props = {
   comment: Resource,
@@ -29,7 +30,7 @@ class Comment extends React.Component<Props> {
 
             return (
               <Aspect key={aspect}>
-                <AspectDescription>{aspect}</AspectDescription>
+                <AspectDescription>{STATS_MAPPING[aspect] || aspect}</AspectDescription>
                 <AspectRating>{aspectValue}</AspectRating>
               </Aspect>
             );

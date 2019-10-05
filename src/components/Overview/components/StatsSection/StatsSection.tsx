@@ -9,6 +9,7 @@ import {
   StatValue,
   Header
 } from './elements';
+import { STATS_MAPPING } from '../../../../stores/reviewsStore';
 
 type Props = {
   loaded: boolean,
@@ -33,7 +34,7 @@ class StatsSection extends React.Component<Props> {
 
             return (
               <Row key={statValue}>
-                <StatTitle>{stat}</StatTitle>
+                <StatTitle>{STATS_MAPPING[stat] || stat}</StatTitle>
                 <StatValue>{statValue}</StatValue>
               </Row>
             )
