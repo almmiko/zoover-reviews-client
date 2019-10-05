@@ -1,47 +1,43 @@
 import React from 'react';
 import { Wrapper, Header, RatingNumber, Title, TitleText, TitleSubInfo, RatingAspects, Aspect, AspectDescription, AspectRating, Description, MetaInfo } from './elements';
+import { observer } from 'mobx-react';
+import moment from 'moment';
+import { Resource } from '../../../../typings/reviewsComments';
 
-class Comment extends React.Component<any> {
+type Props = {
+  comment: Resource,
+};
+
+@observer
+class Comment extends React.Component<Props> {
   render() {
+    const { comment } = this.props;
+
     return (
       <Wrapper>
         <Header>
-          <RatingNumber>8</RatingNumber>
+          <RatingNumber>{comment.ratings.general.general}</RatingNumber>
           <Title>
-            <TitleText>Tittle</TitleText>
-            <TitleSubInfo>user, 13-12-44</TitleSubInfo>
+            <TitleText>{comment.titles[comment.locale]}</TitleText>
+            <TitleSubInfo>{comment.user}, {moment(comment.entryDate).format('MM-DD-YYYY')}</TitleSubInfo>
           </Title>
         </Header>
         <RatingAspects>
-          <Aspect>
-            <AspectDescription>Location</AspectDescription>
-            <AspectRating>5</AspectRating>
-          </Aspect>
-          <Aspect>
-            <AspectDescription>Location</AspectDescription>
-            <AspectRating>5</AspectRating>
-          </Aspect>
-          <Aspect>
-            <AspectDescription>Location</AspectDescription>
-            <AspectRating>5</AspectRating>
-          </Aspect>
-          <Aspect>
-            <AspectDescription>Location</AspectDescription>
-            <AspectRating>5</AspectRating>
-          </Aspect>
-          <Aspect>
-            <AspectDescription>Location</AspectDescription>
-            <AspectRating>5</AspectRating>
-          </Aspect>
-          <Aspect>
-            <AspectDescription>Location</AspectDescription>
-            <AspectRating>5</AspectRating>
-          </Aspect>
+          {Object.keys(comment.ratings.aspects).map((aspect: string) => {
+            const aspectValue = comment.ratings.aspects[aspect];
+            if (!aspectValue) return null;
+
+            return (
+              <Aspect key={aspect}>
+                <AspectDescription>{aspect}</AspectDescription>
+                <AspectRating>{aspectValue}</AspectRating>
+              </Aspect>
+            );
+          })}
         </RatingAspects>
-        <Description>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem doloremque earum incidunt quibusdam quod. Accusamus animi, aperiam est facilis iure odio provident totam voluptate. Dicta eligendi ex modi tempora tenetur!
-        </Description>
+        <Description>{comment.texts[comment.locale]}</Description>
         <MetaInfo>
-          Traveled with family in 12.44.44
+          Traveled with {comment.traveledWith.toLowerCase()} in {moment(comment.travelDate).format('MMMM Do YYYY')}
         </MetaInfo>
       </Wrapper>
     );

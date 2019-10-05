@@ -31,6 +31,7 @@ export interface Aspects {
   environmental: number;
   pool: number;
   terrace: number;
+  [key: string]: number;
 }
 
 export interface Ratings {

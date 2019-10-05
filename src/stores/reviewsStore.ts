@@ -1,7 +1,7 @@
 import { observable, computed, action, runInAction } from "mobx";
 import reviewsService from '../services/reviewsService';
 import { ReviewStats } from '../typings/reviewStats';
-import { ReviewsComments } from '../typings/reviewsComments';
+import { ReviewsComments, Meta } from '../typings/reviewsComments';
 
 class ReviewsStore {
 
@@ -9,10 +9,16 @@ class ReviewsStore {
   reviewStats: ReviewStats | undefined;
 
   @observable
-  reviewComments: ReviewsComments | undefined;
+  reviewComments: ReviewsComments = {
+    resources: [],
+    meta: {} as Meta,
+  };
 
   @observable
   statsLoaded: boolean = false;
+
+  @observable
+  commentsLoaded: boolean = false;
 
   @computed
   get getReviewComments() {
@@ -22,13 +28,6 @@ class ReviewsStore {
   @computed
   get getReviewStats() {
     return this.reviewStats;
-  }
-
-  constructor() {
-    setTimeout(() => {
-      console.log(this.reviewComments);
-      console.log(this.reviewStats);
-    }, 3000)
   }
 
   @action
@@ -53,6 +52,7 @@ class ReviewsStore {
 
       runInAction(() => {
         this.reviewComments = reviewComments;
+        this.commentsLoaded = true;
       });
 
     } catch (e) {
