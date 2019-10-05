@@ -15,8 +15,8 @@ export const Title = styled.div`
   font-size: 18px;
 `;
 
-export const Value = styled.div`
-  font-size: 25px;
+export const Value = styled.div<{error: boolean}>`
+  font-size: ${(props) => props.error ? '15px': '25px'};
   color: #757575;
 `;
 

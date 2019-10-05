@@ -14,12 +14,13 @@ import { STATS_MAPPING } from '../../../../stores/reviewsStore';
 type Props = {
   loaded: boolean,
   title: string,
+  apiError: boolean,
   stats: {[ key: string ]: any} | undefined,
 }
 
 class StatsSection extends React.Component<Props> {
   render() {
-    const { title, stats = {}, loaded } = this.props;
+    const { title, stats = {}, loaded, apiError } = this.props;
 
     return (
       <Wrapper>
@@ -28,7 +29,7 @@ class StatsSection extends React.Component<Props> {
         </Header>
         <Container>
           <Section>
-          {loaded ? Object.keys(stats).map((stat: string) => {
+          {apiError ? 'Error while fetching data' : (loaded ? Object.keys(stats).map((stat: string) => {
             const statValue = stats[stat];
             if (!statValue) return null;
 
@@ -38,7 +39,7 @@ class StatsSection extends React.Component<Props> {
                 <StatValue>{statValue}</StatValue>
               </Row>
             )
-          }): 'Loading...'}
+          }): 'Loading...')}
           </Section>
         </Container>
       </Wrapper>

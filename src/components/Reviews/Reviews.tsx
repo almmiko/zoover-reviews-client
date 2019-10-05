@@ -10,11 +10,21 @@ type InjectedProps = {
   reviewsStore: ReviewsStore;
 }
 
-type Props = {}
+type Props = {
+  apiError: boolean,
+}
+
+type State = {
+  apiCallError: boolean,
+}
 
 @inject('reviewsStore')
 @observer
-class Reviews extends React.Component<Props> {
+class Reviews extends React.Component<Props, State> {
+
+  state = {
+    apiCallError: false,
+  };
 
   get injected(): InjectedProps {
     return this.props as Props & InjectedProps;
@@ -22,18 +32,27 @@ class Reviews extends React.Component<Props> {
 
   handleSort = (sortBy: string, order: string) => {
     const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
-    filterAndSortReviewComments({ sortBy, order }); //todo handle error
+    filterAndSortReviewComments({ sortBy, order })
+      .catch(() => {
+        this.setState({ apiCallError: true })
+      });
   };
 
   handleFilter = (traveledWith: string) => {
     const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
-    filterAndSortReviewComments({ traveledWith }); //todo handle error
+    filterAndSortReviewComments({ traveledWith })
+      .catch(() => {
+        this.setState({ apiCallError: true })
+      });
   };
 
   handlePageChange = (page: number) => {
     const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
     window.scrollTo(0, 0);
-    filterAndSortReviewComments({ page }); //todo handle error
+    filterAndSortReviewComments({ page })
+      .catch(() => {
+        this.setState({ apiCallError: true })
+      });
   };
 
   render() {
@@ -47,6 +66,7 @@ class Reviews extends React.Component<Props> {
           <SortControls onSort={this.handleSort} />
         </Actions>
         <Comments
+          error={this.props.apiError || this.state.apiCallError}
           currentPage={currentPaginationPage}
           onPageChanged={this.handlePageChange}
           comments={getReviewComments}

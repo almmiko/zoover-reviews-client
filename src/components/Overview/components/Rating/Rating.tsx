@@ -5,18 +5,19 @@ import { Icon } from 'antd';
 type Props = {
   rating: number | undefined,
   loaded: boolean,
+  apiError: boolean
 }
 
 class Rating extends React.Component<Props> {
   render() {
-    const { loaded, rating } = this.props;
+    const { loaded, rating, apiError } = this.props;
     return (
       <Wrapper>
         <IconBox>
           <Icon type="star" />
         </IconBox>
         <Title>Average Rating</Title>
-        <Value>{loaded ? rating : 'Loading...'}</Value>
+        <Value error={apiError}>{apiError ? 'Error while fetching data' : (loaded ? rating : 'Loading...')}</Value>
       </Wrapper>
     );
   }

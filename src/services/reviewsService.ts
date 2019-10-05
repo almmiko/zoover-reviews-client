@@ -36,7 +36,7 @@ const getReviewComments = async (query: Query): Promise<ReviewsComments> => {
   });
 
   const response = await apiClient.get(
-    `v1/reviews?${queryParams}`);
+    `/v1/reviews?${queryParams}`);
 
   return response.data;
 };

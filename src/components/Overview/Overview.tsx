@@ -10,7 +10,9 @@ type InjectedProps = {
   reviewsStore: ReviewsStore;
 }
 
-type Props = {}
+type Props = {
+  apiError: boolean
+}
 
 @inject('reviewsStore')
 @observer
@@ -31,16 +33,21 @@ class Overview extends React.Component<Props> {
     return (
       <Wrapper>
         <RatingContainer>
-          <Rating loaded={statsLoaded} rating={rating} />
+          <Rating
+            apiError={this.props.apiError}
+            loaded={statsLoaded}
+            rating={rating} />
         </RatingContainer>
         <StatsSectionContainer>
           <StatsSection
+            apiError={this.props.apiError}
             title={'Rating aspects'}
             stats={ratingAspects}
             loaded={statsLoaded} />
         </StatsSectionContainer>
         <TraveledWithContainer>
           <StatsSection
+            apiError={this.props.apiError}
             title={'Traveled with'}
             stats={traveledWith}
             loaded={statsLoaded} />
