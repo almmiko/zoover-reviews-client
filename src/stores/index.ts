@@ -1,11 +1,11 @@
-import Storeex from './storeex';
+import ReviewsStore from './reviewsStore';
 
 export {
-    Storeex,
+  ReviewsStore,
 };
 
-const ss = new Storeex();
+const reviewsStore = new ReviewsStore();
 
 export default {
-    ss,
+  reviewsStore,
 };
