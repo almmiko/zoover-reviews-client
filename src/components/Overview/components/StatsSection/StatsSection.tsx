@@ -1,113 +1,43 @@
 import React from 'react';
-import { Wrapper, Title, Container, Section, Row, StatTitle, StatValue, Header } from './elements';
+import {
+  Wrapper,
+  Title,
+  Container,
+  Section,
+  Row,
+  StatTitle,
+  StatValue,
+  Header
+} from './elements';
 
-class StatsSection extends React.Component<any> {
+type Props = {
+  loaded: boolean,
+  title: string,
+  stats: {[ key: string ]: any} | undefined,
+}
+
+class StatsSection extends React.Component<Props> {
   render() {
+    const { title, stats = {}, loaded } = this.props;
+
     return (
       <Wrapper>
         <Header>
-          <Title>Rating aspects</Title>
+          <Title>{title}</Title>
         </Header>
         <Container>
           <Section>
-            <Row>
-                <StatTitle>location</StatTitle>
-                <StatValue>1</StatValue>
-            </Row>
-            <Row>
-                <StatTitle>location</StatTitle>
-                <StatValue>2</StatValue>
-            </Row>
-            <Row>
-                <StatTitle>location</StatTitle>
-                <StatValue>3</StatValue>
-            </Row>
-            <Row>
-                <StatTitle>location</StatTitle>
-                <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-          </Section>
-          <Section>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
-            <Row>
-              <StatTitle>location</StatTitle>
-              <StatValue>3</StatValue>
-            </Row>
+          {loaded ? Object.keys(stats).map((stat: string) => {
+            const statValue = stats[stat];
+            if (!statValue) return null;
+
+            return (
+              <Row key={statValue}>
+                <StatTitle>{stat}</StatTitle>
+                <StatValue>{statValue}</StatValue>
+              </Row>
+            )
+          }): 'Loading...'}
           </Section>
         </Container>
       </Wrapper>

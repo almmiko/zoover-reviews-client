@@ -64,4 +64,5 @@ export const StatValue = styled.div`
 export const StatTitle = styled.div`
   font-size: 15px;
   color: #9e9e9e;
+  text-transform: capitalize;
 `;

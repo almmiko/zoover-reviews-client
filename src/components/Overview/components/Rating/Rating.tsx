@@ -2,15 +2,21 @@ import React from 'react';
 import { Title, Value, Wrapper, IconBox } from './elements';
 import { Icon } from 'antd';
 
-class Rating extends React.Component<any> {
+type Props = {
+  rating: number | undefined,
+  loaded: boolean,
+}
+
+class Rating extends React.Component<Props> {
   render() {
+    const { loaded, rating } = this.props;
     return (
       <Wrapper>
         <IconBox>
           <Icon type="star" />
         </IconBox>
         <Title>Average Rating</Title>
-        <Value>4.45</Value>
+        <Value>{loaded ? rating : 'Loading...'}</Value>
       </Wrapper>
     );
   }
