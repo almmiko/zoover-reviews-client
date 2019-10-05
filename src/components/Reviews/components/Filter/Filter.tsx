@@ -3,10 +3,14 @@ import { Select } from 'antd';
 import { Title } from './elements';
 const { Option } = Select;
 
-class Filter extends React.Component<{}> {
+type Props = {
+  onFilter: (value: string) => void,
+}
+
+class Filter extends React.Component<Props> {
 
   onChange = (value: string) => {
-    console.log(`selected ${value}`);
+    this.props.onFilter(value)
   };
 
   render() {
@@ -15,6 +19,7 @@ class Filter extends React.Component<{}> {
         <Title>Traveled with:</Title>
         <Select
           // disabled={true}
+          allowClear={true}
           style={{ width: 200 }}
           placeholder="Select type"
           optionFilterProp="children"

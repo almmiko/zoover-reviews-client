@@ -21,8 +21,13 @@ class Reviews extends React.Component<any> {
   }
 
   handleSort = (sortBy: string, order: string) => {
-    console.log(sortBy);
-    console.log(order);
+    const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
+    filterAndSortReviewComments({ sortBy, order }); //todo handle error
+  };
+
+  handleFilter = (traveledWith: string) => {
+    const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
+    filterAndSortReviewComments({ traveledWith }); //todo handle error
   };
 
   render() {
@@ -32,7 +37,7 @@ class Reviews extends React.Component<any> {
     return(
       <Wrapper>
         <Actions>
-          <Filter />
+          <Filter onFilter={this.handleFilter} />
           <SortControls onSort={this.handleSort} />
         </Actions>
         <Comments comments={getReviewComments} loaded={commentsLoaded} />

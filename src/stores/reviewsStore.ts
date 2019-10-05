@@ -1,5 +1,5 @@
 import { observable, computed, action, runInAction } from "mobx";
-import reviewsService from '../services/reviewsService';
+import reviewsService, { Query } from '../services/reviewsService';
 import { ReviewStats } from '../typings/reviewStats';
 import { ReviewsComments, Meta } from '../typings/reviewsComments';
 
@@ -13,6 +13,9 @@ class ReviewsStore {
     resources: [],
     meta: {} as Meta,
   };
+
+  @observable
+  reviewCurrentQueryParams: Query | undefined;
 
   @observable
   statsLoaded: boolean = false;
@@ -48,7 +51,7 @@ class ReviewsStore {
   @action
   fetchReviewComments = async (page = 1, limit = 20) => {
     try {
-      const reviewComments = await reviewsService.getReviewComments(page, limit);
+      const reviewComments = await reviewsService.getReviewComments({ page, limit });
 
       runInAction(() => {
         this.reviewComments = reviewComments;
@@ -58,7 +61,26 @@ class ReviewsStore {
     } catch (e) {
       return Promise.reject(e);
     }
-  }
+  };
+
+  @action
+  filterAndSortReviewComments = async (config: { sortBy?: string, order?: string, traveledWith?: string}) => {
+    try {
+      this.reviewCurrentQueryParams = {...this.reviewCurrentQueryParams, ...config};
+      this.commentsLoaded = false;
+
+      const reviewComments = await reviewsService.getReviewComments(this.reviewCurrentQueryParams);
+
+      runInAction(() => {
+        this.reviewComments = reviewComments;
+        this.commentsLoaded = true;
+      });
+    } catch (e) {
+      this.commentsLoaded = true;
+      return Promise.reject(e)
+    }
+  };
+
 }
 
 export default ReviewsStore;
