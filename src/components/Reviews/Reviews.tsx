@@ -30,6 +30,12 @@ class Reviews extends React.Component<any> {
     filterAndSortReviewComments({ traveledWith }); //todo handle error
   };
 
+  handlePageChange = (page: number) => {
+    const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
+    window.scrollTo(0, 0);
+    filterAndSortReviewComments({ page }); //todo handle error
+  };
+
   render() {
     const { reviewsStore } = this.injected;
     const { getReviewComments, commentsLoaded } = reviewsStore;
@@ -40,7 +46,11 @@ class Reviews extends React.Component<any> {
           <Filter onFilter={this.handleFilter} />
           <SortControls onSort={this.handleSort} />
         </Actions>
-        <Comments comments={getReviewComments} loaded={commentsLoaded} />
+        <Comments
+          onPageChanged={this.handlePageChange}
+          comments={getReviewComments}
+          loaded={commentsLoaded}
+        />
       </Wrapper>
     );
   }

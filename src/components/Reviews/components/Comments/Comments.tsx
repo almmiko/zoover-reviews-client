@@ -7,6 +7,7 @@ import { ReviewsComments, Resource } from '../../../../typings/reviewsComments';
 type Props = {
   comments: ReviewsComments,
   loaded: boolean,
+  onPageChanged: (page: number) => void,
 };
 
 @observer
@@ -22,7 +23,7 @@ class Comments extends React.Component<Props> {
         loading={!loaded}
         pagination={loaded && {
           onChange: page => {
-            console.log(page);
+            this.props.onPageChanged(page);
           },
           pageSize: +meta.limit || 20,
           total: meta.totalItems,

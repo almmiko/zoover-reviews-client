@@ -91,7 +91,7 @@ class ReviewsStore {
   };
 
   @action
-  filterAndSortReviewComments = async (config: { sortBy?: string, order?: string, traveledWith?: string}) => {
+  filterAndSortReviewComments = async (config: {page?: number, sortBy?: string, order?: string, traveledWith?: string}) => {
     try {
       this.reviewCurrentQueryParams = {...this.reviewCurrentQueryParams, ...config};
       this.commentsLoaded = false;
