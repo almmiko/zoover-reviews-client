@@ -30,6 +30,8 @@ export const STATS_MAPPING = {
   terrace: 'Terrace',
 };
 
+const PAGINATION_INITIAL_PAGE = 1;
+
 class ReviewsStore {
 
   @observable
@@ -45,10 +47,13 @@ class ReviewsStore {
   reviewCurrentQueryParams: Query | undefined;
 
   @observable
-  statsLoaded: boolean = false;
+  statsLoaded = false;
 
   @observable
-  commentsLoaded: boolean = false;
+  commentsLoaded = false;
+
+  @observable
+  currentPaginationPage = PAGINATION_INITIAL_PAGE;
 
   @computed
   get getReviewComments() {
@@ -93,6 +98,12 @@ class ReviewsStore {
   @action
   filterAndSortReviewComments = async (config: {page?: number, sortBy?: string, order?: string, traveledWith?: string}) => {
     try {
+      this.currentPaginationPage = config.page || PAGINATION_INITIAL_PAGE;
+
+      if (!config.page) { //reset pagination when sorting or filtering applied.
+        config.page = PAGINATION_INITIAL_PAGE;
+      }
+
       this.reviewCurrentQueryParams = {...this.reviewCurrentQueryParams, ...config};
       this.commentsLoaded = false;
 

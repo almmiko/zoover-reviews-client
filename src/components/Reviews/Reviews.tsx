@@ -14,7 +14,7 @@ type Props = {}
 
 @inject('reviewsStore')
 @observer
-class Reviews extends React.Component<any> {
+class Reviews extends React.Component<Props> {
 
   get injected(): InjectedProps {
     return this.props as Props & InjectedProps;
@@ -38,7 +38,7 @@ class Reviews extends React.Component<any> {
 
   render() {
     const { reviewsStore } = this.injected;
-    const { getReviewComments, commentsLoaded } = reviewsStore;
+    const { getReviewComments, commentsLoaded, currentPaginationPage } = reviewsStore;
 
     return(
       <Wrapper>
@@ -47,6 +47,7 @@ class Reviews extends React.Component<any> {
           <SortControls onSort={this.handleSort} />
         </Actions>
         <Comments
+          currentPage={currentPaginationPage}
           onPageChanged={this.handlePageChange}
           comments={getReviewComments}
           loaded={commentsLoaded}
