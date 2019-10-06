@@ -13,11 +13,11 @@ type Props = {
 class Comment extends React.Component<Props> {
   render() {
     const { comment } = this.props;
-
+    const rating = comment.ratings.general.general;
     return (
       <Wrapper>
         <Header>
-          <RatingNumber>{comment.ratings.general.general}</RatingNumber>
+          <RatingNumber rating={rating}>{rating}</RatingNumber>
           <Title>
             <TitleText>{comment.titles[comment.locale]}</TitleText>
             <TitleSubInfo>{comment.user}, {moment(comment.entryDate).format('MM-DD-YYYY')}</TitleSubInfo>

@@ -4,13 +4,29 @@ export const Wrapper = styled.div``;
 export const Header = styled.div`
   display: flex;
 `;
-export const RatingNumber = styled.div`
+export const RatingNumber = styled.div<{ rating: number}>`
   padding: 10px 22px;
-  background-color: #43a047;
   color: #ffff;
   font-size: 25px;
   display: inline-block;
   border-radius: 5px;
+ 
+ background-color: ${({ rating }) => {
+   
+   if (rating <= 4) {
+     return'#ff3434';
+   }
+   
+   if (rating <= 7) {
+     return '#3ac135';
+   }
+   
+   if (rating >= 8) {
+     return '#03600d'
+   }
+   
+  }};
+  
 `;
 export const Title = styled.div`
   margin-left: 10px;
