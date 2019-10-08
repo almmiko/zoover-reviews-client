@@ -1,0 +1,304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="sc-cSHVUG iiInzh"
+>
+  <div
+    className="sc-iAyFgw ebqiie"
+  >
+    <div
+      className="sc-hSdWYo hJQlgZ"
+    >
+      <div
+        className="sc-eNQAEJ klORJt"
+      >
+        <div
+          className="sc-kkGfuU ftPDDE"
+        >
+          <i
+            aria-label="icon: star"
+            className="anticon anticon-star"
+          >
+            <svg
+              aria-hidden="true"
+              className=""
+              data-icon="star"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3zM664.8 561.6l36.1 210.3L512 672.7 323.1 772l36.1-210.3-152.8-149L417.6 382 512 190.7 606.4 382l211.2 30.7-152.8 148.9z"
+              />
+            </svg>
+          </i>
+        </div>
+        <div
+          className="sc-hMqMXs cYZiBm"
+        >
+          Average Rating
+        </div>
+        <div
+          className="sc-kEYyzF bMuvUb"
+        >
+          Loading...
+        </div>
+      </div>
+    </div>
+    <div
+      className="sc-eHgmQL egrPoa"
+    >
+      <div
+        className="sc-kAzzGY ggJXLv"
+      >
+        <div
+          className="sc-chPdSV hoAwRC"
+        >
+          <div
+            className="sc-kgoBCf gYpTbJ"
+          >
+            Rating aspects
+          </div>
+        </div>
+        <div
+          className="sc-kGXeez hExuGf"
+        >
+          <div
+            className="sc-dxgOiQ dXCtNg"
+          >
+            Loading...
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sc-cvbbAY bWAvgk"
+    >
+      <div
+        className="sc-kAzzGY ggJXLv"
+      >
+        <div
+          className="sc-chPdSV hoAwRC"
+        >
+          <div
+            className="sc-kgoBCf gYpTbJ"
+          >
+            Traveled with
+          </div>
+        </div>
+        <div
+          className="sc-kGXeez hExuGf"
+        >
+          <div
+            className="sc-dxgOiQ dXCtNg"
+          >
+            Loading...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-bdVaJa iJBuyK"
+  >
+    <div
+      className="sc-bwzfXH lgHPGt"
+    >
+      <div>
+        <div
+          className="sc-htpNat ieMIZj"
+        >
+          Traveled with:
+        </div>
+        <div
+          className="ant-select ant-select-enabled ant-select-allow-clear"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseUp={[Function]}
+          onTouchStart={[Function]}
+          style={
+            Object {
+              "width": 200,
+            }
+          }
+        >
+          <div
+            aria-autocomplete="list"
+            aria-controls="test-uuid"
+            aria-expanded={false}
+            aria-haspopup="true"
+            className="ant-select-selection
+            ant-select-selection--single"
+            onKeyDown={[Function]}
+            role="combobox"
+            tabIndex={0}
+          >
+            <div
+              className="ant-select-selection__rendered"
+            >
+              <div
+                className="ant-select-selection__placeholder"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                style={
+                  Object {
+                    "WebkitUserSelect": "none",
+                    "display": "block",
+                    "userSelect": "none",
+                  }
+                }
+                unselectable="on"
+              >
+                Select type
+              </div>
+            </div>
+            <span
+              className="ant-select-arrow"
+              onClick={[Function]}
+              style={
+                Object {
+                  "WebkitUserSelect": "none",
+                  "userSelect": "none",
+                }
+              }
+              unselectable="on"
+            >
+              <i
+                aria-label="icon: down"
+                className="anticon anticon-down ant-select-arrow-icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  className=""
+                  data-icon="down"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                  />
+                </svg>
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="sc-fjdhpX cIMorS"
+      >
+        <div
+          className="sc-jzJRlG gElug"
+        >
+          Sort by:
+        </div>
+        <button
+          className="ant-btn ant-btn-default"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            Travel Date
+          </span>
+          <i
+            aria-label="icon: caret-up"
+            className="anticon anticon-caret-up"
+          >
+            <svg
+              aria-hidden="true"
+              className=""
+              data-icon="caret-up"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1024 1024"
+              width="1em"
+            >
+              <path
+                d="M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"
+              />
+            </svg>
+          </i>
+        </button>
+        <button
+          className="ant-btn ant-btn-default"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            Review Date
+          </span>
+          <i
+            aria-label="icon: caret-up"
+            className="anticon anticon-caret-up"
+          >
+            <svg
+              aria-hidden="true"
+              className=""
+              data-icon="caret-up"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1024 1024"
+              width="1em"
+            >
+              <path
+                d="M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"
+              />
+            </svg>
+          </i>
+        </button>
+      </div>
+    </div>
+    <div
+      className="ant-list ant-list-vertical ant-list-lg ant-list-split ant-list-loading"
+    >
+      <div
+        className="ant-spin-nested-loading"
+      >
+        <div>
+          <div
+            className="ant-spin ant-spin-spinning"
+          >
+            <span
+              className="ant-spin-dot ant-spin-dot-spin"
+            >
+              <i
+                className="ant-spin-dot-item"
+              />
+              <i
+                className="ant-spin-dot-item"
+              />
+              <i
+                className="ant-spin-dot-item"
+              />
+              <i
+                className="ant-spin-dot-item"
+              />
+            </span>
+          </div>
+        </div>
+        <div
+          className="ant-spin-container ant-spin-blur"
+        >
+          <div
+            style={
+              Object {
+                "minHeight": 53,
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
