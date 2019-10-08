@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../../_common/Layout/media';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -13,6 +14,10 @@ export const Wrapper = styled.div`
 export const Title = styled.div`
   color: #9e9e9e;
   font-size: 18px;
+  
+  @media ${device.laptop} {
+    font-size: 12px;
+  }
 `;
 
 export const Value = styled.div<{error: boolean}>`
@@ -37,5 +42,9 @@ export const IconBox = styled.div`
   i {
     font-size: 40px;
     color: #fff;
+  }
+  
+  @media ${device.laptop} {
+    padding: 15px;
   }
 `;

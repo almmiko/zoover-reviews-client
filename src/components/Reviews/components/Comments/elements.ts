@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { device } from '../../../_common/Layout/media';
+
+const LOW_RATING = 4;
+const MEDIUM_RATING = 7;
+const HIGH_RATING = 8;
 
 export const Wrapper = styled.div``;
 export const Header = styled.div`
@@ -13,15 +18,15 @@ export const RatingNumber = styled.div<{ rating: number}>`
  
  background-color: ${({ rating }) => {
    
-   if (rating <= 4) {
+   if (rating <= LOW_RATING) {
      return'#ff3434';
    }
    
-   if (rating <= 7) {
+   if (rating <= MEDIUM_RATING) {
      return '#3ac135';
    }
    
-   if (rating >= 8) {
+   if (rating >= HIGH_RATING) {
      return '#03600d'
    }
    
@@ -55,6 +60,11 @@ export const Aspect = styled.div`
   justify-content: space-between;
   padding-right: 30px;
   margin-bottom: 5px;
+  
+  @media ${device.tablet} {
+    float: inherit;
+    width: 100%;
+  }
 `;
 export const AspectRating = styled.div`
   color: #757575
