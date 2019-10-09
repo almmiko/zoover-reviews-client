@@ -34,6 +34,11 @@
   "jest": {
     "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test:nowatch"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",

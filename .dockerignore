@@ -1,0 +1,18 @@
+.editorconfig
+.gitignore
+.git
+.DS_Store
+.idea
+.dockerignore
+
+node_modules
+npm-debug.log
+Dockerfile
+
+# testing
+/coverage
+
+# production
+/build
+
+README.md
