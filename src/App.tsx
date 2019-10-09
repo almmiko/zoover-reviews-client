@@ -32,7 +32,7 @@ class App extends Component<Props, State> {
   componentDidMount() {
     const { reviewsStore } = this.injected;
 
-    reviewsStore.fetchReviewComments().catch(() => this.setState({fetchReviewCommentsError: true}));
+    reviewsStore.fetchReviewComments().catch(() => this.setState({ fetchReviewCommentsError: true }));
     reviewsStore.fetchReviewStats().catch(() => this.setState({ fetchReviewStatsError: true}));
   }
 

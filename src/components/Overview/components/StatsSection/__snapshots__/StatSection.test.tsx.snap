@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div>
+      test
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.div
+        key="test"
+      >
+        <styled.div>
+          test
+        </styled.div>
+        <styled.div>
+          test
+        </styled.div>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

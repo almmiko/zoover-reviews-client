@@ -1,16 +1,11 @@
 import React from 'react';
 import App from './App';
-import renderer from 'react-test-renderer';
-import { Provider as MobxProvider } from 'mobx-react';
-import stores from './stores';
+import { shallow } from 'enzyme';
+import { reviewStoreStub } from './testUtils';
 
 it('renders correctly', () => {
-  const tree = renderer
-    .create(
-      <MobxProvider {...stores}>
-        <App />
-      </MobxProvider>,
-    )
-    .toJSON();
+  // @ts-ignore
+  const tree = shallow(<App.wrappedComponent reviewsStore={reviewStoreStub} />);
+
   expect(tree).toMatchSnapshot();
 });

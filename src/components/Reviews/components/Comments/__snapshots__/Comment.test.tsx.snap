@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div />
+    <styled.div>
+      <styled.h2>
+        test
+      </styled.h2>
+      <styled.div>
+        test
+        , 
+        01-01-1970
+      </styled.div>
+    </styled.div>
+  </styled.div>
+  <styled.div />
+  <styled.div>
+    test
+  </styled.div>
+  <styled.div>
+    Traveled with 
+    test
+     in 
+    January 1st 1970
+  </styled.div>
+</styled.div>
+`;

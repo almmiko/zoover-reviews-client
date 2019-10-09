@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <styled.div>
+    <Icon
+      type="star"
+    />
+  </styled.div>
+  <styled.div>
+    Average Rating
+  </styled.div>
+  <styled.div
+    error={false}
+  >
+    12
+  </styled.div>
+</styled.div>
+`;

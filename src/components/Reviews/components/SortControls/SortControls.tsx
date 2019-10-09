@@ -65,7 +65,7 @@ class SortControls extends React.Component<Props, State> {
         <Title>
           Sort by:
         </Title>
-        <Button type="default" onClick={this.handleTravelDateOrder}>
+        <Button id={'travelDateOrderButton'} type="default" onClick={this.handleTravelDateOrder}>
           Travel Date
           <Icon type={(() => this.getIcon('travelDateOrder'))()} />
         </Button>

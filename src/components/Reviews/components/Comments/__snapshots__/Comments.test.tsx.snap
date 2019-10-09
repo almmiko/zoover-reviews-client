@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Fragment>
+  <List
+    bordered={false}
+    dataSource={Array []}
+    itemLayout="vertical"
+    loading={false}
+    pagination={
+      Object {
+        "current": 1,
+        "onChange": [Function],
+        "pageSize": 20,
+        "total": undefined,
+      }
+    }
+    renderItem={[Function]}
+    size="large"
+    split={true}
+  />
+</Fragment>
+`;

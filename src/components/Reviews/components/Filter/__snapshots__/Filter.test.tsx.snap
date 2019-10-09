@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <styled.div>
+    Traveled with:
+  </styled.div>
+  <Select
+    allowClear={true}
+    choiceTransitionName="zoom"
+    onChange={[Function]}
+    optionFilterProp="children"
+    placeholder="Select type"
+    showSearch={false}
+    style={
+      Object {
+        "width": 200,
+      }
+    }
+    transitionName="slide-up"
+  >
+    <Option
+      value="FAMILY"
+    >
+      FAMILY
+    </Option>
+    <Option
+      value="FRIENDS"
+    >
+      FRIENDS
+    </Option>
+    <Option
+      value="OTHER"
+    >
+      OTHER
+    </Option>
+    <Option
+      value="COUPLE"
+    >
+      COUPLE
+    </Option>
+    <Option
+      value="SINGLE"
+    >
+      SINGLE
+    </Option>
+  </Select>
+</div>
+`;

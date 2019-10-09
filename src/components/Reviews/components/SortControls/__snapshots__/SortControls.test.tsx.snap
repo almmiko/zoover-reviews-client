@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<styled.div>
+  <styled.div>
+    Sort by:
+  </styled.div>
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    id="travelDateOrderButton"
+    loading={false}
+    onClick={[Function]}
+    type="default"
+  >
+    Travel Date
+    <Icon
+      type="caret-up"
+    />
+  </Button>
+  <Button
+    block={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    type="default"
+  >
+    Review Date
+    <Icon
+      type="caret-up"
+    />
+  </Button>
+</styled.div>
+`;

@@ -18,7 +18,6 @@ class Filter extends React.Component<Props> {
       <div>
         <Title>Traveled with:</Title>
         <Select
-          // disabled={true}
           allowClear={true}
           style={{ width: 200 }}
           placeholder="Select type"
