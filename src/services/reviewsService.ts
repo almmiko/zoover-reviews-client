@@ -9,6 +9,7 @@ export type Query = {
   sortBy?: string,
   order?: string,
   traveledWith?: string,
+  searchQuery?: string,
 }
 
 const getReviewStats = async (): Promise<ReviewStats> => {
@@ -24,7 +25,8 @@ const getReviewComments = async (query: Query): Promise<ReviewsComments> => {
     limit = 20,
     sortBy = 'entryDate',
     order = 'desc',
-    traveledWith
+    traveledWith,
+    searchQuery,
   } = query;
 
   const queryParams = encodeQuery({
@@ -32,7 +34,8 @@ const getReviewComments = async (query: Query): Promise<ReviewsComments> => {
     limit,
     sortBy,
     order,
-    traveledWith
+    traveledWith,
+    searchQuery
   });
 
   const response = await apiClient.get(

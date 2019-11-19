@@ -96,7 +96,13 @@ class ReviewsStore {
   };
 
   @action
-  filterAndSortReviewComments = async (config: {page?: number, sortBy?: string, order?: string, traveledWith?: string}) => {
+  filterAndSortReviewComments = async (config: {
+    page?: number,
+    sortBy?: string,
+    order?: string,
+    traveledWith?: string,
+    searchQuery?: string,
+  }) => {
     try {
       this.currentPaginationPage = config.page || PAGINATION_INITIAL_PAGE;
 

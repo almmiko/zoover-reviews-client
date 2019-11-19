@@ -1,10 +1,11 @@
 import React from 'react';
-import { Wrapper, Actions } from './elements';
+import { Wrapper, Actions, SearchWrapper } from './elements';
 import Filter from './components/Filter/Filter';
 import Comments from './components/Comments/Comments';
 import ReviewsStore from '../../stores/reviewsStore';
 import { inject, observer } from 'mobx-react';
 import SortControls from './components/SortControls/SortControls';
+import SearchInput from '../_common/SearchInput/SearchInput';
 
 type InjectedProps = {
   reviewsStore: ReviewsStore;
@@ -55,6 +56,16 @@ class Reviews extends React.Component<Props, State> {
       });
   };
 
+  onSearch = (value: string) => {
+    if (!value.trim()) return;
+
+    const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
+    filterAndSortReviewComments({ searchQuery: value })
+      .catch(() => {
+        this.setState({ apiCallError: true })
+      });
+  };
+
   render() {
     const { reviewsStore } = this.injected;
     const { getReviewComments, commentsLoaded, currentPaginationPage } = reviewsStore;
@@ -65,6 +76,11 @@ class Reviews extends React.Component<Props, State> {
           <Filter onFilter={this.handleFilter} />
           <SortControls onSort={this.handleSort} />
         </Actions>
+        <SearchWrapper>
+          <SearchInput
+            placeholder={'Search by title'}
+            onSearch={this.onSearch} />
+        </SearchWrapper>
         <Comments
           error={this.props.apiError || this.state.apiCallError}
           currentPage={currentPaginationPage}

@@ -28,3 +28,8 @@ export const Actions = styled.div`
     flex-direction: column;
   }
 `;
+
+export const SearchWrapper = styled.div`
+  width: 300px;
+  margin: 10px 0;
+`;
