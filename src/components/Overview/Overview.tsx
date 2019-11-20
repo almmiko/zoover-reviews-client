@@ -2,52 +2,44 @@ import React from 'react';
 import StatsSection from './components/StatsSection/StatsSection';
 import Rating from './components/Rating/Rating';
 import { Wrapper, RatingContainer, StatsSectionContainer, TraveledWithContainer } from './elements';
-import { inject, observer } from 'mobx-react';
 import { get } from 'lodash';
-import ReviewsStore from '../../stores/reviewsStore';
+import { connect } from 'react-redux';
+import { initialStateType } from '../../reducers/reviewsReducer';
+import { ReviewStats } from '../../typings/reviewStats';
 
-type InjectedProps = {
-  reviewsStore: ReviewsStore;
+type StateProps = {
+  reviewStats: ReviewStats | null,
+  statsLoaded: boolean
+  statsLoadError: boolean,
 }
 
-type Props = {
-  apiError: boolean
-}
-
-@inject('reviewsStore')
-@observer
-class Overview extends React.Component<Props> {
-
-  get injected(): InjectedProps {
-    return this.props as Props & InjectedProps;
-  }
+class Overview extends React.Component<StateProps> {
 
   render() {
-    const { reviewsStore } = this.injected;
-    const { statsLoaded, getReviewStats } = reviewsStore;
+    const { statsLoaded, reviewStats, statsLoadError } = this.props;
 
-    const rating = get(getReviewStats, 'averageRating');
-    const ratingAspects = get(getReviewStats, 'averageRatingAspects');
-    const traveledWith = get(getReviewStats, 'traveledWith');
+    const rating = get(reviewStats, 'averageRating');
+    const ratingAspects = get(reviewStats, 'averageRatingAspects');
+    const traveledWith = get(reviewStats, 'traveledWith');
 
     return (
       <Wrapper>
         <RatingContainer>
           <Rating
-            apiError={this.props.apiError}
+            apiError={statsLoadError}
             loaded={statsLoaded}
             rating={rating} />
         </RatingContainer>
         <StatsSectionContainer>
           <StatsSection
-            apiError={this.props.apiError}
+            apiError={statsLoadError}
             title={'Rating aspects'}
             stats={ratingAspects}
             loaded={statsLoaded} />
         </StatsSectionContainer>
         <TraveledWithContainer>
           <StatsSection
-            apiError={this.props.apiError}
+            apiError={statsLoadError}
             title={'Traveled with'}
             stats={traveledWith}
             loaded={statsLoaded} />
@@ -57,4 +49,13 @@ class Overview extends React.Component<Props> {
   }
 }
 
-export default Overview;
+const mapStateToProps = (state: { reviews: initialStateType}): StateProps => {
+  const { reviews } = state;
+  return {
+    reviewStats: reviews.reviewStats,
+    statsLoaded: reviews.statsLoaded,
+    statsLoadError: reviews.statsLoadError,
+  }
+};
+
+export default connect(mapStateToProps)(Overview);

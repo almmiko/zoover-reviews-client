@@ -3,7 +3,7 @@ import { Wrapper, Header, RatingNumber, Title, TitleText, TitleSubInfo, RatingAs
 import { observer } from 'mobx-react';
 import moment from 'moment';
 import { Resource } from '../../../../typings/reviewsComments';
-import { STATS_MAPPING } from '../../../../stores/reviewsStore';
+import { STATS_MAPPING } from '../../../../reducers/reviewsReducer';
 
 type Props = {
   comment: Resource,

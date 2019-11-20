@@ -1,52 +1,43 @@
-import { observer, inject } from 'mobx-react';
 import React, { Component } from 'react';
 import Reviews from './components/Reviews/Reviews';
 import { Wrapper } from './components/_common/Layout/elements';
 import Overview from './components/Overview/Overview';
-import ReviewsStore from './stores/reviewsStore';
+import { fetchReviewComments, fetchReviewStats } from './actions/reviewsActions';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
-type InjectedProps = {
-  reviewsStore: ReviewsStore;
-}
+type Props = DispatchFromProps
 
-type Props = {};
-
-type State = {
-  fetchReviewCommentsError: boolean,
-  fetchReviewStatsError: boolean
-};
-
-@inject('reviewsStore')
-@observer
-class App extends Component<Props, State> {
-
-  state = {
-    fetchReviewCommentsError: false,
-    fetchReviewStatsError: false,
-  };
-
-  get injected(): InjectedProps {
-    return this.props as Props & InjectedProps;
-  }
+class App extends Component<Props> {
 
   componentDidMount() {
-    const { reviewsStore } = this.injected;
+    const { fetchReviewStats, fetchReviewComments } = this.props;
 
-    reviewsStore.fetchReviewComments().catch(() => this.setState({ fetchReviewCommentsError: true }));
-    reviewsStore.fetchReviewStats().catch(() => this.setState({ fetchReviewStatsError: true}));
+    fetchReviewStats();
+    fetchReviewComments();
   }
 
   render() {
-    const { fetchReviewCommentsError, fetchReviewStatsError } = this.state;
-
     return (
         <Wrapper>
-            <Overview apiError={fetchReviewStatsError} />
-            <Reviews apiError={fetchReviewCommentsError} />
+            <Overview />
+            <Reviews />
         </Wrapper>
     );
   }
 
 }
 
-export default App;
+const mapDispatchToProps = (dispatch: Dispatch): DispatchFromProps => {
+  return {
+    fetchReviewStats: () => dispatch<any>(fetchReviewStats()),
+    fetchReviewComments: () => dispatch<any>(fetchReviewComments())
+  }
+};
+
+type DispatchFromProps = {
+  fetchReviewStats: () => void,
+  fetchReviewComments: () => void,
+}
+
+export default connect<{}, DispatchFromProps>(null, mapDispatchToProps)(App);

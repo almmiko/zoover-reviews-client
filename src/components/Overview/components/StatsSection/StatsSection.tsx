@@ -9,7 +9,7 @@ import {
   StatValue,
   Header
 } from './elements';
-import { STATS_MAPPING } from '../../../../stores/reviewsStore';
+import { STATS_MAPPING } from '../../../../reducers/reviewsReducer';
 
 type Props = {
   loaded: boolean,

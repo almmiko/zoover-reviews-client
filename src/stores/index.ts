@@ -1,11 +1,9 @@
-import ReviewsStore from './reviewsStore';
+import { configureStore } from '@reduxjs/toolkit';
+import reviewsReducer from '../reducers/reviewsReducer';
 
-export {
-  ReviewsStore,
-};
-
-const reviewsStore = new ReviewsStore();
-
-export default {
-  reviewsStore,
-};
+export default configureStore({
+  devTools: true, // todo NODE_ENV PROD = false
+  reducer: {
+    reviews: reviewsReducer
+  }
+});

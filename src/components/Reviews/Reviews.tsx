@@ -2,73 +2,49 @@ import React from 'react';
 import { Wrapper, Actions, SearchWrapper } from './elements';
 import Filter from './components/Filter/Filter';
 import Comments from './components/Comments/Comments';
-import ReviewsStore from '../../stores/reviewsStore';
-import { inject, observer } from 'mobx-react';
 import SortControls from './components/SortControls/SortControls';
 import SearchInput from '../_common/SearchInput/SearchInput';
+import { initialStateType } from '../../reducers/reviewsReducer';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { filterAndSortReviewComments } from '../../actions/reviewsActions';
+import { ReviewsComments } from '../../typings/reviewsComments';
 
-type InjectedProps = {
-  reviewsStore: ReviewsStore;
+type StateProps = {
+  commentsLoadError: boolean,
+  currentPaginationPage: number,
+  commentsLoaded: boolean,
+  reviewComments: ReviewsComments,
 }
 
-type Props = {
-  apiError: boolean,
-}
-
-type State = {
-  apiCallError: boolean,
-}
-
-@inject('reviewsStore')
-@observer
-class Reviews extends React.Component<Props, State> {
-
-  state = {
-    apiCallError: false,
-  };
-
-  get injected(): InjectedProps {
-    return this.props as Props & InjectedProps;
-  }
+class Reviews extends React.Component<StateProps & DispatchFromProps> {
 
   handleSort = (sortBy: string, order: string) => {
-    const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
+    const { filterAndSortReviewComments } = this.props;
     filterAndSortReviewComments({ sortBy, order })
-      .catch(() => {
-        this.setState({ apiCallError: true })
-      });
   };
 
   handleFilter = (traveledWith: string) => {
-    const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
-    filterAndSortReviewComments({ traveledWith })
-      .catch(() => {
-        this.setState({ apiCallError: true })
-      });
+    const { filterAndSortReviewComments } = this.props;
+    filterAndSortReviewComments({ traveledWith });
   };
 
   handlePageChange = (page: number) => {
-    const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
+    const { filterAndSortReviewComments } = this.props;
     window.scrollTo(0, 0);
-    filterAndSortReviewComments({ page })
-      .catch(() => {
-        this.setState({ apiCallError: true })
-      });
+    filterAndSortReviewComments({ page });
   };
 
-  onSearch = (value: string) => {
-    if (!value.trim()) return;
+  onSearch = (v: string) => {
+    const value = v.trim();
+    if (!value && value !== '') return;
 
-    const { reviewsStore: { filterAndSortReviewComments }} = this.injected;
+    const { filterAndSortReviewComments } = this.props;
     filterAndSortReviewComments({ searchQuery: value })
-      .catch(() => {
-        this.setState({ apiCallError: true })
-      });
   };
 
   render() {
-    const { reviewsStore } = this.injected;
-    const { getReviewComments, commentsLoaded, currentPaginationPage } = reviewsStore;
+    const { commentsLoadError, currentPaginationPage, commentsLoaded, reviewComments } = this.props;
 
     return(
       <Wrapper>
@@ -82,10 +58,10 @@ class Reviews extends React.Component<Props, State> {
             onSearch={this.onSearch} />
         </SearchWrapper>
         <Comments
-          error={this.props.apiError || this.state.apiCallError}
+          error={commentsLoadError}
           currentPage={currentPaginationPage}
           onPageChanged={this.handlePageChange}
-          comments={getReviewComments}
+          comments={reviewComments}
           loaded={commentsLoaded}
         />
       </Wrapper>
@@ -93,4 +69,24 @@ class Reviews extends React.Component<Props, State> {
   }
 }
 
-export default Reviews;
+const mapStateToProps = (state: { reviews: initialStateType}): StateProps => {
+  const { reviews } = state;
+  return {
+    commentsLoadError: reviews.commentsLoadError,
+    currentPaginationPage: reviews.currentPaginationPage,
+    commentsLoaded: reviews.commentsLoaded,
+    reviewComments: reviews.reviewComments,
+  }
+};
+
+const mapDispatchToProps = (dispatch: Dispatch): DispatchFromProps => {
+  return {
+    filterAndSortReviewComments: (config: any) => dispatch<any>(filterAndSortReviewComments(config)),
+  }
+};
+
+type DispatchFromProps = {
+  filterAndSortReviewComments: (config: any) => void,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
